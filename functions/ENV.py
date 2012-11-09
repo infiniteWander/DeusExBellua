@@ -1,7 +1,7 @@
 # -*- coding:utf8 -*-
 
 ###########################################
-# request.py
+# ENV.py
 # Nom: DeusExBellua
 # Copyright 2012: Maximilien Rigaut
 ###########################################
@@ -22,3 +22,7 @@
 ########################################################
 # LICENCE                                              #
 ########################################################
+
+CONFIG_PATH="./characters/"
+MODEL_PATH="./models/"
+INDEX_PATH="./index/"
