@@ -28,15 +28,17 @@ from ConfigParser import ConfigParser
 
 def read(name):
 	if not os.path.exists(name): return False
-	return ConfigParser().read(open(name))
+	cfg=ConfigParser()
+	cfg.read(name)
+	return cfg
 
 def sections(parser):
 	if not parser: return False
 	return parser.sections()
 
-def items(section):
+def items(parser,section):
 	if not section: return False
-	return section.items()
+	return parser.items(section)
 
 def getsection(parser,section):
 	if not parser: return False

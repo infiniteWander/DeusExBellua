@@ -26,5 +26,21 @@
 
 import os,sys
 from functions import *
+import time
 
-print parser.read('e'),parser.read("DeusExBellua.py")
+def bint(n):
+	try:
+		return int(n)
+	except:
+		return 0
+
+nb=100
+fdp=100
+t1=time.clock()
+
+for mm in xrange(nb*fdp):
+	p= parser.read("./characters/systemD10/Dragon.cfg")
+	for i in parser.sections(p):
+		[j for j in parser.items(p,i) if bint(j[1])>1]
+
+print (time.clock()-t1)/nb
