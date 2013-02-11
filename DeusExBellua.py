@@ -28,19 +28,22 @@ import os,sys
 from functions import *
 import time
 
-def bint(n):
-	try:
-		return int(n)
-	except:
-		return 0
 
-nb=100
-fdp=100
-t1=time.clock()
+sD10=parser.parsedObjectList("./characters/systemD10/")
+#print sD10.files
+prs=search.filterFunction("str>8")
+#prs.show()
+print sD10.filter(prs)
+#Commands:
+# view <char>
+# set <system>
+# find RECO [INTER/UNION RECO]
+# RECO=<section>.<field> OP VAL
 
-for mm in xrange(nb*fdp):
-	p= parser.read("./characters/systemD10/Dragon.cfg")
-	for i in parser.sections(p):
-		[j for j in parser.items(p,i) if bint(j[1])>1]
+#for mm in xrange(nb*fdp):
+	#p= parser.read("./characters/systemD10/Dragon.cfg")
+	#for i in parser.sections(p):
+		#[j for j in parser.items(p,i) if bint(j[1])>1]
 
-print (time.clock()-t1)/nb
+#print (time.clock()-t1)/nb
+

@@ -26,21 +26,21 @@
 import os,sys
 from ConfigParser import ConfigParser
 
-def read(name):
-	if not os.path.exists(name): return False
-	cfg=ConfigParser()
-	cfg.read(name)
-	return cfg
-
-def sections(parser):
-	if not parser: return False
-	return parser.sections()
-
-def items(parser,section):
-	if not section: return False
-	return parser.items(section)
-
-def getsection(parser,section):
-	if not parser: return False
-	if not parser.has_section(section): return False
-	return parser.get(section)
+class parsedObjectList():
+	def __init__(self,directory):
+		self.files={}
+		for f in os.listdir(directory):
+			self.files[f]=ConfigParser()
+			self.files[f].read(os.path.join(directory,f))
+	def get(self,elt):
+		if elt in self.files:
+			return self.files[elt]
+		else:
+			return False
+	def filter(self,function):
+		res=set()
+		for name,prs in self.files.iteritems():
+			#print prs
+			if function.process(prs):
+				res.add(name)
+		return res
