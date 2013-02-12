@@ -28,22 +28,17 @@ import os,sys
 from functions import *
 import time
 
+# Load the game system
+systemPath="./characters/systemD10/"
+prompt="{}> ".format(systemPath.split('/')[-2])
+system=parser.parsedObjectList(systemPath)
 
-sD10=parser.parsedObjectList("./characters/systemD10/")
-#print sD10.files
-prs=search.filterFunction("str>8&str=4")
-#prs.show()
-show.showList( sD10.filter(prs))
-#Commands:
-# view <char>
-# set <system>
-# find RECO [INTER/UNION RECO]
-# RECO=<section>.<field> OP VAL
-
-#for mm in xrange(nb*fdp):
-	#p= parser.read("./characters/systemD10/Dragon.cfg")
-	#for i in parser.sections(p):
-		#[j for j in parser.items(p,i) if bint(j[1])>1]
-
-#print (time.clock()-t1)/nb
-
+im=""
+while ((im)!="quit"):
+	try:
+		im=raw_input(prompt)
+		request.parser.parse_args(im.split())
+	except:
+		pass
+#prs=search.filterFunction("str>5")
+#show.showList( sD10.filter(prs))

@@ -25,7 +25,12 @@
 
 def showList(dico):
 	for fld,val in dico.iteritems():
-		print "    {} : {}".format(fld,val)
+		print "    {}".format(fld)
+		for v in val:
+			print "      > {}: {}".format(v[0],v[1])
 
 def showPerso(perso):
-	pass
+	for section in perso.sections():
+		print "[{}]".format(section)
+		for item,val in perso.items(section):
+			print "    {}: {}".format(item,val)

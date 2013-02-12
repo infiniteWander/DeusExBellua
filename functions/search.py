@@ -40,12 +40,9 @@ def And(a,b):
 def Or(a,b):
 	return len(a)>0 or len(b)>0
 
-op=[">","<"]
-textop=["=","!","?"]
-allop=op+textop
+allop=[">","<","=","!","?"]
 logicop=["&","|"]
 translateop={">":Inf,"<":Sup,"=":Eq,'!':Not,'?':In,'&':And,'|':Or}
-
 
 #class Request():
 	#def __init__(self,section,function):
@@ -73,8 +70,6 @@ class filterFunction():
 	
 		for i in xrange(mx):
 			if text[i] in allop:
-				if text[i] in op:
-					self.val="i"
 				self.field=text[0:i].strip()
 				self.op=text[i].strip()
 				virgin=False
@@ -86,9 +81,8 @@ class filterFunction():
 				self.followingOp=text[j]
 				j-=1
 				break
-		
-		if self.val=="i": self.val=int(text[i+1:j+1])
-		else: self.val=text[i+1:j+1].strip()
+				
+		self.val=text[i+1:j+1].strip()
 			
 	def process(self,parser):
 		found=[]
@@ -98,7 +92,8 @@ class filterFunction():
 				break
 		if self.following:
 			nfound=self.following.process(parser)
-			if translateop[self.followingOp](nfound,found): return nfound
+			if translateop[self.followingOp](nfound,found):
+				return found+nfound
 			else: return []
 		return found
 	
