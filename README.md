@@ -3,15 +3,6 @@ DeusExBellua
 
 A character aggregator for game masters
 
-Tao Te Ching
-------------
-
-Do not seek fame. Do not make plans. Do not think that you know.
-
-Be awareof all that is and dwell in the infinite. Wander where there is no path.
-
-Be empty that is all.
-
 Usage
 ===========
 The following commands are available:
@@ -22,29 +13,32 @@ The following commands are available:
 + `help`
 
 The `help` command will give you basic information, about the commands (although they are very straightforward).
-However some clarification might be needed on the expression formatting:
+However some clarification might be needed on the expression formatting (see: [search pattern](#search-pattern))
 
-The program is `ledit` compatible (and I recomand using it if you don't want to feel very very frustrated)
+Notes
+-----------
+This program is `ledit` friendly (and I recomand using it if you don't want to feel very very frustrated)
 
-The models are stored in `models/` and I strongly recomand using/creating them.
+The models are stored in `models/` and I strongly recomand using/creating and maintening them.
+
 Search pattern
 -----------
 The help state:
 
-+ `<expression> = <field> [=><!?] <value> ([&|] <expression>)`
++ `<expression> = <field> [=><?!] <value> ( [&|] <expression> )`
 
 Witch means an expression is composed of a field (witch would be looked for presence in the characters) an operator and a value to compare. This expression can be completed by a logical operator and eventualy another expression.
 
-It is important to note that the <field> is compared for inclusion in ALL the fields ALL charaters, 
+It is important to note that the `<field>` is compared for inclusion in ALL the fields of ALL charaters, 
 hence meaning that "magic>4" will list all character who have "magic" in a characteristic  to a level greater that 4.
 
 ### Operator signification
-+ '<' and '>' : supperior and inferior
-+ '=' and '!' : equal and different
-+ '?' : includes
++ `'<'` and `'>'` : supperior and inferior
++ `'='` and `'!'` : equal and different
++ `'?'` : includes
 
-+ '&' : and
-+ '|' : or
++ `'&'` : and
++ `'|'` : or
 
 ### Examples
 + `magic>4` : will list any character with magic inside a field at a level above 4
@@ -59,6 +53,15 @@ TODO
 + Upgrade error handling
 + Implement a correct system changing
 + Context overflow is also an issue
+
+Tao Te Ching
+------------
+
+Do not seek fame. Do not make plans. Do not think that you know.
+
+Be awareof all that is and dwell in the infinite. Wander where there is no path.
+
+Be empty that is all.
 
 Licence
 -----------
