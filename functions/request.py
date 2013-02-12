@@ -23,21 +23,22 @@
 # LICENCE                                              #
 ########################################################
 
-import argparse
 
-parser = argparse.ArgumentParser(description='Process a request over a number of documents',prog="DeusExBellua")
-subparsers = parser.add_subparsers(help="Commands help")
+#import argparse
 
-# create the parser for the "view" command
-parser_v = subparsers.add_parser('view', help='Display a character of the current system')
-parser_v.add_argument('character', help='the name of the character to display')
-parser_v.set_defaults(func=view)
-# create the parser for the "find" command
-parser_f = subparsers.add_parser('find', help='Find a character matching a given expression')
-parser_f.add_argument('expr', help='the expression obey the syntax: <field> [><=!?] <val> ([|&] <expr>)')
-parser_f.set_defaults(func=find)
+#parser = argparse.ArgumentParser(description='Process a request over a number of documents',prog="DeusExBellua")
+#subparsers = parser.add_subparsers(help="Commands help")
 
-parser_q = subparsers.add_parser('quit', help='Quit')
+## create the parser for the "view" command
+#parser_v = subparsers.add_parser('view', help='Display a character of the current system')
+#parser_v.add_argument('character', help='the name of the character to display')
+#parser_v.set_defaults(func=view)
+## create the parser for the "find" command
+#parser_f = subparsers.add_parser('find', help='Find a character matching a given expression')
+#parser_f.add_argument('expr', help='the expression obey the syntax: <field> [><=!?] <val> ([|&] <expr>)')
+#parser_f.set_defaults(func=find)
+
+#parser_q = subparsers.add_parser('quit', help='Quit')
 
 
 #Commands:

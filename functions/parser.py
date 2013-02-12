@@ -30,8 +30,9 @@ class parsedObjectList():
 	def __init__(self,directory):
 		self.files={}
 		for f in os.listdir(directory):
-			self.files[f]=ConfigParser()
-			self.files[f].read(os.path.join(directory,f))
+			short=f.rsplit(".",1)[0]
+			self.files[short]=ConfigParser()
+			self.files[short].read(os.path.join(directory,f))
 	def get(self,elt):
 		if elt in self.files:
 			return self.files[elt]

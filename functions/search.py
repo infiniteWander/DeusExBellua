@@ -62,7 +62,7 @@ class filterFunction():
 		self.field,self.op,self.val="","",""
 		self.following=None
 		self.followingOp=None
-		self.parse(text)
+		self.parse(text)	
 		
 	def parse(self,text):
 		i,j,mx=0,0,len(text)
@@ -71,7 +71,7 @@ class filterFunction():
 		for i in xrange(mx):
 			if text[i] in allop:
 				self.field=text[0:i].strip()
-				self.op=text[i].strip()
+				self.op=text[i]
 				virgin=False
 				break
 		
@@ -81,9 +81,12 @@ class filterFunction():
 				self.followingOp=text[j]
 				j-=1
 				break
-				
+		
 		self.val=text[i+1:j+1].strip()
-			
+		if virgin:
+			print 'Parsing error: Expression "{}" is incorrect'.format(text)
+			raise ValueError
+		
 	def process(self,parser):
 		found=[]
 		for field,val in match(self.field,parser):
