@@ -38,9 +38,9 @@ class parsedObjectList():
 		else:
 			return False
 	def filter(self,function):
-		res=set()
+		res={}
 		for name,prs in self.files.iteritems():
-			#print prs
-			if function.process(prs):
-				res.add(name)
+			tmp=function.process(prs)
+			if len(tmp)>0:
+				res[name]=tmp
 		return res

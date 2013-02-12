@@ -23,3 +23,9 @@
 # LICENCE                                              #
 ########################################################
 
+def showList(dico):
+	for fld,val in dico.iteritems():
+		print "    {} : {}".format(fld,val)
+
+def showPerso(perso):
+	pass

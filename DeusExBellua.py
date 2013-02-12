@@ -31,9 +31,9 @@ import time
 
 sD10=parser.parsedObjectList("./characters/systemD10/")
 #print sD10.files
-prs=search.filterFunction("str>8")
+prs=search.filterFunction("str>8&str=4")
 #prs.show()
-print sD10.filter(prs)
+show.showList( sD10.filter(prs))
 #Commands:
 # view <char>
 # set <system>

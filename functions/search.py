@@ -33,10 +33,12 @@ def Not(a,b):
 	return a!=b
 def In(a,b):
 	return a in b
+	
 def And(a,b):
-	return a and b
+	return len(a)>0 and len(b)>0
+	
 def Or(a,b):
-	return a or b
+	return len(a)>0 or len(b)>0
 
 op=[">","<"]
 textop=["=","!","?"]
@@ -85,19 +87,20 @@ class filterFunction():
 				j-=1
 				break
 		
-		if self.val=="i":
-			self.val=int(text[i+1:j+1])
-		else:
-			self.val=text[i+1:j+1].strip()
+		if self.val=="i": self.val=int(text[i+1:j+1])
+		else: self.val=text[i+1:j+1].strip()
+			
 	def process(self,parser):
-		val=False
-		for data in match(self.field,parser):
-			if translateop[self.op](data,self.val):
-				val=True
+		found=[]
+		for field,val in match(self.field,parser):
+			if translateop[self.op](val,self.val):
+				found.append((field,val))
 				break
 		if self.following:
-			translateop[self.followingOp](self.following.process(parser),val)
-		return val
+			nfound=self.following.process(parser)
+			if translateop[self.followingOp](nfound,found): return nfound
+			else: return []
+		return found
 	
 	def show(self):
 		print (self.field,self.op,self.val)
@@ -110,5 +113,6 @@ def match(field,parser):
 	for section in parser.sections():
 		for item,val in parser.items(section):
 			if field in item:
-				ret.append(val)
+				ret.append((item,val))
+	
 	return ret
