@@ -24,9 +24,10 @@
 ########################################################
 
 def Inf(a,b):
-	return a>b
+	#print int(a),int(b),int(a)>int(b)
+	return int(a)>int(b)
 def Sup(a,b):
-	return a<b
+	return int(a)<int(b)
 def Eq(a,b):
 	return a==b
 def Not(a,b):
@@ -43,18 +44,6 @@ def Or(a,b):
 allop=[">","<","=","!","?"]
 logicop=["&","|"]
 translateop={">":Inf,"<":Sup,"=":Eq,'!':Not,'?':In,'&':And,'|':Or}
-
-#class Request():
-	#def __init__(self,section,function):
-		#"""The form of a the "section" field is either:
-			#+ section.* (all fields)
-			#+ section (analyse the section itself)
-			#+ * (All sections)
-			#+ section.field (analyse a specific field)
-		#If at least one field match the function,
-		#the analysis return true, false otherwise"""
-		#self.function=function
-		#self.section=self.parse(section)
 		
 
 class filterFunction():
@@ -83,21 +72,27 @@ class filterFunction():
 				break
 		
 		self.val=text[i+1:j+1].strip()
+		#if self.op in ("<",">"):
+			#self.val=int(self.val)
 		if virgin:
 			print 'Parsing error: Expression "{}" is incorrect'.format(text)
-			raise ValueError
+			raise SyntaxError
 		
 	def process(self,parser):
 		found=[]
 		for field,val in match(self.field,parser):
-			if translateop[self.op](val,self.val):
-				found.append((field,val))
-				break
+			try:
+				if translateop[self.op](val,self.val):
+					found.append((field,val))
+					#break #If you wan't only the first result
+			except:
+				pass
 		if self.following:
 			nfound=self.following.process(parser)
 			if translateop[self.followingOp](nfound,found):
 				return found+nfound
 			else: return []
+		
 		return found
 	
 	def show(self):

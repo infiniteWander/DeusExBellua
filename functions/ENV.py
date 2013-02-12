@@ -23,6 +23,8 @@
 # LICENCE                                              #
 ########################################################
 
+DEFAULT_SYSTEM="systemD10"
+
 CONFIG_PATH="./characters/"
 MODEL_PATH="./models/"
 INDEX_PATH="./index/"

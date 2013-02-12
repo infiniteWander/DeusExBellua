@@ -1,0 +1,54 @@
+<h1 id="deusexbellua">DeusExBellua</h1>
+<p>A character aggregator for game masters</p>
+<h2 id="tao-te-ching">Tao Te Ching</h2>
+<p>Do not seek fame. Do not make plans. Do not think that you know.</p>
+<p>Be awareof all that is and dwell in the infinite. Wander where there is no path.</p>
+<p>Be empty that is all.</p>
+<h1 id="usage">Usage</h1>
+<p>The following commands are available:</p>
+<ul>
+<li><code>show &lt;character&gt;</code></li>
+<li><code>find &lt;expression&gt;</code></li>
+<li><code>set &lt;system&gt;</code></li>
+<li><code>help</code></li>
+</ul>
+<p>The <code>help</code> command will give you basic information, about the commands (although they are very straightforward). However some clarification might be needed on the expression formatting:</p>
+<h2 id="search-pattern">Search pattern</h2>
+<p>The help state:</p>
+<ul>
+<li><code>&lt;expression&gt; = &lt;field&gt; [=&gt;&lt;!--?] &lt;value--&gt;)</code></li>
+</ul>
+<p>Witch means an expression is composed of a field (witch would be looked for presence in the characters) an operator and a value to compare. This expression can be completed by a logical operator and eventualy another expression.</p>
+<p>It is important to note that the <field> is compared for inclusion in ALL the fields ALL charaters, hence meaning that &quot;magic&gt;4&quot; will list all character who have &quot;magic&quot; in a characteristic to a level greater that 4.</p>
+<h3 id="operator-signification">Operator signification</h3>
+<ul>
+<li>'&lt;' and '&gt;' : supperior and inferior</li>
+<li>'=' and '!' : equal and different</li>
+<li><p>'?' : includes</p></li>
+<li>'&amp;' : and</li>
+<li><p>'|' : or</p></li>
+</ul>
+<h3 id="examples">Examples</h3>
+<ul>
+<li><code>magic&gt;4</code> : will list any character with magic inside a field at a level above 4
+<ul>
+<li><code>White magic = 5</code></li>
+<li><code>magic = 9</code></li>
+</ul></li>
+<li><code>str&gt;4 &amp; magic&lt; 3</code> : will list any character with a str above 4 and magic below 3
+<ul>
+<li><code>str = 5</code> , <code>magic=0</code></li>
+<li><code>striper = 6</code>, <code>magic =2</code></li>
+</ul></li>
+</ul>
+<h1 id="todo">TODO</h1>
+<ul>
+<li>Upgrade error handling</li>
+<li>Update help</li>
+<li>Add explanation and figures to Readme</li>
+<li>Correct the &lt;/&gt; int problem</li>
+<li>Implement a correct system changing</li>
+<li>Context overflow is also an issue</li>
+</ul>
+<h2 id="licence">Licence</h2>
+<p>DeusExBellua is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>

@@ -43,5 +43,5 @@ class parsedObjectList():
 		for name,prs in self.files.iteritems():
 			tmp=function.process(prs)
 			if len(tmp)>0:
-				res[name]=tmp
+				res[name]=tmp #if exists, add, else create
 		return res

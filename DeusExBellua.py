@@ -51,7 +51,7 @@ def quitP(t):
 
 def printCommands():
 	print "Valid commands are:"
-	for c in commands: print "   ",c,helpCommands[c]
+	for c in commands: print "   ",c,":",helpCommands[c]
 	
 def invalidCommand(text):
 	print "Error: command {} is invalid".format(text[0])
@@ -61,14 +61,14 @@ def parseInput(text):
 	if text[0] not in commands:
 		invalidCommand(text)
 		return
-	commands[text[0]](text)	
+	commands[text[0]](text)
 
 commands={'show':viewP,'set':setS,'find':findP,'help':helpC,'quit':quitP}
 helpCommands={
 	'show':"<character> Show the character",
 	'set':"<system> Change the current game system (indev)",
 	'find':"""<expression> Lookup for a character matching the expression
-        <expression> = <field> [=><!?] ([&|] <expression>)""",
+        <expression> = <field> [=><!?] <value> ([&|] <expression>)""",
 	'help':'Display this help',
 	'quit':'Quit program'
 }
@@ -87,5 +87,8 @@ while (1):
 		parseInput(raw_input().split(" ",1))
 	except SystemExit:
 		break
-	except ValueError: #Improvethat
+	except SyntaxError: #Improvethat
 		pass
+	except KeyboardInterrupt:
+		print "quit"
+		break
