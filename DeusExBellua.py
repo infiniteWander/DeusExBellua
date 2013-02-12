@@ -87,7 +87,7 @@ while (1):
 		parseInput(raw_input().split(" ",1))
 	except SystemExit:
 		break
-	except SyntaxError: #Improvethat
+	except errors.ParsingError: #Improvethat
 		pass
 	except KeyboardInterrupt:
 		print "quit"

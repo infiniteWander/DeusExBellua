@@ -23,6 +23,8 @@
 # LICENCE                                              #
 ########################################################
 
+from errors import *
+
 def Inf(a,b):
 	#print int(a),int(b),int(a)>int(b)
 	return int(a)>int(b)
@@ -33,7 +35,7 @@ def Eq(a,b):
 def Not(a,b):
 	return a!=b
 def In(a,b):
-	return a in b
+	return b in a
 	
 def And(a,b):
 	return len(a)>0 and len(b)>0
@@ -44,7 +46,6 @@ def Or(a,b):
 allop=[">","<","=","!","?"]
 logicop=["&","|"]
 translateop={">":Inf,"<":Sup,"=":Eq,'!':Not,'?':In,'&':And,'|':Or}
-		
 
 class filterFunction():
 	def __init__(self,text):
@@ -72,17 +73,17 @@ class filterFunction():
 				break
 		
 		self.val=text[i+1:j+1].strip()
-		#if self.op in ("<",">"):
-			#self.val=int(self.val)
 		if virgin:
 			print 'Parsing error: Expression "{}" is incorrect'.format(text)
-			raise SyntaxError
+			raise ParsingError
 		
 	def process(self,parser):
 		found=[]
 		for field,val in match(self.field,parser):
 			try:
 				if translateop[self.op](val,self.val):
+					if self.op=="?": # Extract context only
+						val=contex(val,self.val)
 					found.append((field,val))
 					#break #If you wan't only the first result
 			except:
@@ -109,3 +110,12 @@ def match(field,parser):
 				ret.append((item,val))
 	
 	return ret
+
+def contex(text,word):
+	ind=text.find(word)
+	mi,ma=max(0,ind-30),min(len(text),ind+30)
+	
+	i=text.find(" ",mi,ind)
+	j=text.rfind(" ",ind,ma)
+	if j<0: j=ma
+	return text[max(mi,i):j+1]

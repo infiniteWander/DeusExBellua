@@ -1,7 +1,7 @@
 # -*- coding:utf8 -*-
 
 ###########################################
-# __init__.py
+# errors.py
 # Nom: DeusExBellua
 # Copyright 2012: Maximilien Rigaut
 ###########################################
@@ -23,7 +23,5 @@
 # LICENCE                                              #
 ########################################################
 
-__all__ = ["errors","parser","search","show"]
-
-if __name__ == '__main__':
-	sys.exit()
+class ParsingError(Exception):
+    pass

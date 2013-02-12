@@ -30,7 +30,7 @@ The help state:
 Witch means an expression is composed of a field (witch would be looked for presence in the characters) an operator and a value to compare. This expression can be completed by a logical operator and eventualy another expression.
 
 It is important to note that the `<field>` is compared for inclusion in ALL the fields of ALL charaters, 
-hence meaning that "magic>4" will list all character who have "magic" in a characteristic  to a level greater that 4.
+hence meaning that "magic>4" will list all character who have "magic" in a characteristic  to a level greater than 4.
 
 ### Operator signification
 + `'<'` and `'>'` : supperior and inferior
